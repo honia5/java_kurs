@@ -7,12 +7,11 @@ public class MyFirstProgram {
     hello("User");
     hello("Robert");
 
-    double len = 5;
-    System.out.println("Pole kwadratu o boku " + len + " = " + (area(len)));
+    Square s = new Square(5);
+    System.out.println("Pole kwadratu o boku " + s.l + " = " + s.area());
 
-    double a = 4;
-    double b = 6;
-    System.out.println("Pole prostokata o bokach " + a + " i " + b +" = " + (area(a, b)));
+    Rectangle r = new Rectangle(4, 6);
+    System.out.println("Pole prostokata o bokach " + r.a + " i " + r.b +" = " + r.area());
 
   }
 
@@ -20,10 +19,6 @@ public class MyFirstProgram {
 
     System.out.println("Hello," + somebody + "!");
   }
-  public static double area(double l){
-    return l * l;
-  }
-  public static double area(double a, double b){
-    return a * b;
-  }
+
+
 }

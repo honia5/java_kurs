@@ -5,7 +5,7 @@ package ru.stqa.pft.sandbox;
  */
 public class Square {
 //
-  public double l;
+public double l;
 //konstruktor
   public Square(double l){
     this.l = l;

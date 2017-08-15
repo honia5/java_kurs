@@ -14,8 +14,9 @@ public class MyFirstProgram {
     System.out.println("Pole prostokata o bokach " + r.a + " i " + r.b + " = " + r.area());
 
 
-    Point p = new Point(1, 1, 4, 4);
-    System.out.println("Distance between two points " + "(" + p.x1 + "," + p.y1 + ")," + "(" + p.x2 + "," + p.y2 + ") = " + p.distance());
+    Point p1 = new Point(2,1);
+    Point p2 = new Point(1, 4);
+    System.out.println("Distance between two points " + "(" + p1.x + "," + p1.y + ")," + "(" + p2.x + "," + p2.y + ") = " + p1.distance(p2));
 
   }
 

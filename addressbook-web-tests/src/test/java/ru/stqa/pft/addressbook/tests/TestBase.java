@@ -1,19 +1,19 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ru.stqa.pft.addressbook.appmenager.ApplicationMenager;
-import sun.plugin2.util.BrowserType;
+
+
 
 /**
  * Created by HoncaRo on 2017-08-28.
  */
 public class TestBase {
 
-  protected final ApplicationMenager app = new ApplicationMenager(org.openqa.selenium.remote.BrowserType.FIREFOX);
-  FirefoxDriver wd;
+  protected final ApplicationMenager app = new ApplicationMenager(BrowserType.FIREFOX);
+
 
   @BeforeMethod
   public void setUp() throws Exception {

@@ -1,8 +1,11 @@
 package ru.stqa.pft.addressbook.appmenager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactDate;
 
 /**
@@ -19,14 +22,22 @@ public class GroupContact extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillNewContactForm(ContactDate contactDate) {
+  public void fillNewContactForm(ContactDate contactDate, boolean creation) {
     type(By.name("firstname"), contactDate.getFirrstname());
     type(By.name("lastname"), contactDate.getLastname());
     type(By.name("address"), contactDate.getAddress());
     type(By.name("home"), contactDate.getHome());
     type(By.name("mobile"), contactDate.getMobile());
     type(By.name("email"), contactDate.getEmail());
+
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactDate.getGroup());
+    } else{
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
   }
+
+}
+
 
   public void gotoAddNewContactPage() {
     click(By.linkText("add new"));

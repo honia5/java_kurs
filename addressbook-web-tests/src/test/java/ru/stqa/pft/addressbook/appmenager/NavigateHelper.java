@@ -2,7 +2,7 @@ package ru.stqa.pft.addressbook.appmenager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 /**
  * Created by HoncaRo on 2017-09-17.

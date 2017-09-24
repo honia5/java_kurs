@@ -11,10 +11,10 @@ import ru.stqa.pft.addressbook.model.ContactDate;
 /**
  * Created by honcaro on 2017-09-19.
  */
-public class GroupContact extends HelperBase {
+public class ContactHelper extends HelperBase {
 
 
-  public GroupContact(WebDriver wd) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
   }
 
@@ -60,5 +60,18 @@ public class GroupContact extends HelperBase {
 
   public void initContactModification() {
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void createContact(ContactDate contact) {
+    gotoAddNewContactPage();
+    fillNewContactForm(contact, true);
+    submitCraetionContact();
+
+
+  }
+
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
   }
 }

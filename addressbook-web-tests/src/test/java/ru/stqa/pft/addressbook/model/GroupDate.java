@@ -11,6 +11,8 @@ public class GroupDate {
     this.footer = footer;
   }
 
+
+
   public String getName() {
     return name;
   }
@@ -21,5 +23,27 @@ public class GroupDate {
 
   public String getFooter() {
     return footer;
+  }
+
+  @Override
+  public String toString() {
+    return "GroupDate{" +
+            "name='" + name + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    GroupDate groupDate = (GroupDate) o;
+
+    return name != null ? name.equals(groupDate.name) : groupDate.name == null;
+  }
+
+  @Override
+  public int hashCode() {
+    return name != null ? name.hashCode() : 0;
   }
 }

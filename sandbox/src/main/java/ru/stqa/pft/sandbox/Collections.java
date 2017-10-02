@@ -13,7 +13,7 @@ public class Collections {
     String[] langs = {"Java", "C#","Python","PHP"};
 
     List<String> languages =  Arrays.asList("Java", "C#","Python","PHP");
-    
+
     for (String l : languages){
       System.out.println("Chcę sie nauczyć " + l);
     }

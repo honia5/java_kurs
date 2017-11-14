@@ -58,8 +58,9 @@ public class ContactHelper extends HelperBase {
     click(By.name("selected[]"));
   }
 
-  public void initContactModification() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void initContactModification(int index) {
+
+    wd.findElements(By.xpath("//tr[@name='entry']//td[@class='center'][3]")).get(index).click();
   }
 
   public void createContact(ContactDate contact) {
@@ -78,8 +79,11 @@ public class ContactHelper extends HelperBase {
     List<ContactDate> contacts = new ArrayList<>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {
-      String firrstname = element.getText();
-      String lastname = element.getText();
+      List<WebElement> cells = element.findElements(By.tagName("td"));
+      String firrstname = cells.get(1).getText();
+      String lastname = cells.get(2).getText();
+      //String firrstname = element.findElement(By.xpath(".//td[2]")).getText();
+      //String lastname = element.findElement(By.xpath(".//td[3]")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       ContactDate contact = new ContactDate(id, "Robert", "Honca", null,
               null, null, null, null);

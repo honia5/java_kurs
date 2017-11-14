@@ -24,7 +24,7 @@ public class ContactCreatingNew extends TestBase{
 
 
         before.add(contact);
-        Comparator<? super ContactDate> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+        Comparator<? super ContactDate> byId = Comparator.comparingInt(ContactDate::getId);
         before.sort(byId);
         after.sort(byId);
         Assert.assertEquals(before, after);

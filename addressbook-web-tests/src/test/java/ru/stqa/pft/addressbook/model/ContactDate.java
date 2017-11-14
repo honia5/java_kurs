@@ -10,6 +10,8 @@ public class ContactDate {
   private final String home;
   private String group;
 
+
+
   public ContactDate(String firrstname, String lastname, String address,
                      String mobile, String email, String home, String group) {
     this.id = Integer.MAX_VALUE;
@@ -87,12 +89,10 @@ public class ContactDate {
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
   }
-
   @Override
   public String toString() {
     return "ContactDate{" +
-            "id=" + id +
-            ", firrstname='" + firrstname + '\'' +
+            "firrstname='" + firrstname + '\'' +
             ", lastname='" + lastname + '\'' +
             '}';
   }

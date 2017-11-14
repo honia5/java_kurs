@@ -21,7 +21,7 @@ public class ContactModificationTest extends TestBase {
               null, null, null, null));
     }
     app.getNavigateHelper().gotoHomePage();
-    app.getContactHelper().initContactModification();
+    app.getContactHelper().initContactModification(before.size() - 1);
     ContactDate contact = new ContactDate(before.get(before.size() - 1).getId(),"Robert", "Honca", null,
             null, null, null, null);
     app.getContactHelper().fillNewContactForm(contact,false);

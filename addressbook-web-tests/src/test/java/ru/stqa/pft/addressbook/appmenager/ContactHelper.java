@@ -43,7 +43,7 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
 
   }
-  public void gotoHomePage() {
+  public void contactPage() {
     if (isElementPresent(By.id("maintable"))){
       return;
     }
@@ -76,19 +76,27 @@ public class ContactHelper extends HelperBase {
 
 
   }
-  public void modifyContact(int index, ContactDate contact) {
-    gotoHomePage();
+  public void modify(int index, ContactDate contact) {
+    contactPage();
     initContactModification(index);
     fillNewContactForm(contact,false);
     submitCraetionContact();
-    gotoHomePage();
+    contactPage();
+  }
+
+  public void delete() {
+    contactPage();
+    selectContact();
+    deleteContact();
+    alertAcept();
+    contactPage();
   }
 
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("//tr[@name='entry']"));
   }
 
-  public List<ContactDate> getContactList() {
+  public List<ContactDate> list() {
     List<ContactDate> contacts = new ArrayList<>();
     List<WebElement> elements = wd.findElements(By.xpath("//tr[@name='entry']"));
     for (WebElement element : elements) {

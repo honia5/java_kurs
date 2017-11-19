@@ -51,12 +51,12 @@ public class ApplicationMenager {
     return groupHelper;
   }
 
-  public NavigateHelper goTO() {
+  public NavigateHelper goTo() {
     return navigateHelper;
   }
 
 
-  public ContactHelper getContactHelper() {
+  public ContactHelper contact() {
     return contactHelper;
   }
 }

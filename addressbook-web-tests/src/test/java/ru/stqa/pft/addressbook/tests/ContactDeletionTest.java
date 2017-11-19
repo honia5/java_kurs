@@ -10,7 +10,7 @@ import java.util.List;
 public class ContactDeletionTest extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
-    app.getNavigateHelper().gotoHomePage();
+    app.goTO().gotoHomePage();
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactDate("Robert", "Honca", null,
               null, null, null, null));
@@ -21,11 +21,11 @@ public class ContactDeletionTest extends TestBase {
   @Test
   public void testContactDeletion() {
     List<ContactDate> before = app.getContactHelper().getContactList();
-    app.getNavigateHelper().gotoHomePage();
+    app.goTO().gotoHomePage();
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteContact();
     app.getContactHelper().alertAcept();
-    app.getNavigateHelper().gotoHomePage();
+    app.goTO().gotoHomePage();
     List<ContactDate> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() - 1);
 

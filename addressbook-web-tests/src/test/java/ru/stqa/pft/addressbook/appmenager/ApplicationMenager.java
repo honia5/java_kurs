@@ -47,11 +47,11 @@ public class ApplicationMenager {
     wd.quit();
   }
 
-  public GroupHelper getGroupHelper() {
+  public GroupHelper group() {
     return groupHelper;
   }
 
-  public NavigateHelper getNavigateHelper() {
+  public NavigateHelper goTO() {
     return navigateHelper;
   }
 

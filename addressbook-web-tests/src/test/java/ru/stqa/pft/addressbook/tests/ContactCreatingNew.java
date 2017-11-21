@@ -1,11 +1,12 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactDate;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.Comparator;
-import java.util.List;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class ContactCreatingNew extends TestBase{
 
@@ -14,20 +15,14 @@ public class ContactCreatingNew extends TestBase{
     public void testCreatingNewContact() {
 
         app.goTo().contactPage();
-        List<ContactDate> before = app.contact().list();
-        ContactDate contact = new ContactDate("Robert", "Honca", null,
-                null, null, null, null);
+        Contacts before = app.contact().all();
+        ContactDate contact = new ContactDate().withFirrstname("Robert").withLastname("Honca");
         app.contact().createContact(contact);
         app.goTo().contactPage();
-        List<ContactDate> after = app.contact().list();
-        Assert.assertEquals(after.size(), before.size() + 1);
-
-
-        before.add(contact);
-        Comparator<? super ContactDate> byId = Comparator.comparingInt(ContactDate::getId);
-        before.sort(byId);
-        after.sort(byId);
-        Assert.assertEquals(before, after);
+        Contacts after = app.contact().all();
+        assertEquals(after.size(), before.size() + 1);
+        assertThat(after, equalTo(
+                before.withAdded(contact.withId(after.stream().mapToInt((c)-> c.getId()).max().getAsInt()))));
     }
 
 

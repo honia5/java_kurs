@@ -2,14 +2,16 @@ package ru.stqa.pft.addressbook.model;
 
 public class ContactDate {
   private int id = Integer.MAX_VALUE;
-  private  String firrstname;
-  private  String lastname;
-  private  String address;
-  private  String mobile;
-  private  String email;
-  private  String home;
+  private String firrstname;
+  private String lastname;
+  private String address;
+  private String mobile;
+  private String email;
+  private String home;
   private String group;
-
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
 
 
   public int getId() {
@@ -55,6 +57,20 @@ public class ContactDate {
     this.group = group;
     return this;
   }
+  public ContactDate withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+  public ContactDate withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+  public ContactDate withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
+
+
 
   public String getFirrstname() {
     return firrstname;
@@ -84,6 +100,30 @@ public class ContactDate {
     return group;
   }
 
+  public String getHomePhone() {
+    return homePhone;
+  }
+
+  public void setHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+  }
+
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+  public void setMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
+  }
+
+  public void setWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -111,5 +151,6 @@ public class ContactDate {
             ", lastname='" + lastname + '\'' +
             '}';
   }
+
 
 }

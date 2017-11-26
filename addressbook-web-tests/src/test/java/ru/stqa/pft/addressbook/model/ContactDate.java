@@ -16,6 +16,18 @@ public class ContactDate {
   private String workPhone;
   private String allPhones;
   private String allEmails;
+  private String allDeteils;
+
+  public String getAllDeteils() {
+    return allDeteils;
+  }
+
+  public ContactDate withAllDeteils(String allDeteils) {
+    this.allDeteils = allDeteils;
+    return this;
+  }
+
+
 
   public String getAllEmails() {
     return allEmails;

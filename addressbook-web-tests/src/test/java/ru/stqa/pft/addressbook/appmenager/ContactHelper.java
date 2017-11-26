@@ -135,6 +135,7 @@ public class ContactHelper extends HelperBase {
     }
     return new Contacts(contactCache);
   }
+
   public ContactDate getInfoFromEditform(ContactDate contact) {
     initContactModificationById(contact.getId());
     String firrstname = wd.findElement(By.name("firstname")).getAttribute("value");
@@ -152,9 +153,23 @@ public class ContactHelper extends HelperBase {
             .withEmail(email).withEmail2(email2).withEmail3(email3);
 
   }
+  public ContactDate getInfoFromDeteilsForm(ContactDate contact) {
+    initContactDeteilsById(contact.getId());
+    String allDetails = wd.findElement(By.xpath("//div[@id='content']")).getText();
+    wd.navigate().back();
+    return new ContactDate().withAllDeteils(allDetails);
+
+
+
+  }
   public void initContactModificationById(int id) {
 
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+
+  }
+  public void initContactDeteilsById(int id) {
+
+    wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
 
   }
 

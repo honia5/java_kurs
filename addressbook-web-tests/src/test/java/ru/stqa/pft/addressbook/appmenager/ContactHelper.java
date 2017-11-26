@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactDate;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by honcaro on 2017-09-19.
@@ -126,10 +124,12 @@ public class ContactHelper extends HelperBase {
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String lastname = cells.get(1).getText();
       String firrstname = cells.get(2).getText();
+      String address = cells.get(3).getText();
       String allPhones = cells.get(5).getText();
+      String allEmails = cells.get(4).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       ContactDate contact = new ContactDate().withId(id).withLastname(lastname).withFirrstname(firrstname)
-              .withAllPhones(allPhones);
+              .withAddress(address).withAllPhones(allPhones).withAllEmails(allEmails);
       contactCache.add(contact);
 
     }
@@ -139,12 +139,17 @@ public class ContactHelper extends HelperBase {
     initContactModificationById(contact.getId());
     String firrstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
     String homePhone = wd.findElement(By.name("home")).getAttribute("value");
     String mobilePhone = wd.findElement(By.name("mobile")).getAttribute("value");
     String workPhone = wd.findElement(By.name("work")).getAttribute("value");
+    String email = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
     return new ContactDate().withId(contact.getId()).withFirrstname(firrstname).withLastname(lastname)
-            .withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone);
+            .withAddress(address).withHomePhone(homePhone).withMobilePhone(mobilePhone).withWorkPhone(workPhone)
+            .withEmail(email).withEmail2(email2).withEmail3(email3);
 
   }
   public void initContactModificationById(int id) {

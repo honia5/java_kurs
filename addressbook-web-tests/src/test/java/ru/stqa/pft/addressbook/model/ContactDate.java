@@ -7,12 +7,25 @@ public class ContactDate {
   private String address;
   private String mobile;
   private String email;
+  private String email2;
+  private String email3;
   private String home;
   private String group;
   private String homePhone;
   private String mobilePhone;
   private String workPhone;
   private String allPhones;
+  private String allEmails;
+
+  public String getAllEmails() {
+    return allEmails;
+  }
+
+  public ContactDate withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
 
   public String getAllPhones() {
     return allPhones;
@@ -22,8 +35,6 @@ public class ContactDate {
     this.allPhones = allPhones;
     return this;
   }
-
-
 
 
   public int getId() {
@@ -60,6 +71,16 @@ public class ContactDate {
     return this;
   }
 
+  public ContactDate withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public ContactDate withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
   public ContactDate withHome(String home) {
     this.home = home;
     return this;
@@ -69,19 +90,21 @@ public class ContactDate {
     this.group = group;
     return this;
   }
+
   public ContactDate withHomePhone(String homePhone) {
     this.homePhone = homePhone;
     return this;
   }
+
   public ContactDate withMobilePhone(String mobilePhone) {
     this.mobilePhone = mobilePhone;
     return this;
   }
+
   public ContactDate withWorkPhone(String workPhone) {
     this.workPhone = workPhone;
     return this;
   }
-
 
 
   public String getFirrstname() {
@@ -106,6 +129,14 @@ public class ContactDate {
 
   public String getHome() {
     return home;
+  }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getEmail3() {
+    return email3;
   }
 
   public String getGroup() {

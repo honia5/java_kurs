@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactDate;
@@ -88,19 +89,19 @@ public class ContactEditDeteilsTest extends TestBase {
   }
 
   public static ContactDate convertContactToEqualsViewFormat(ContactDate contact) {
-    String firsname = contact.getFirrstname();
+    String firstname = contact.getFirrstname();
     String lastname = contact.getLastname();
     String home = contact.getHomePhone();
     String mobile = contact.getMobilePhone();
     String work = contact.getWorkPhone();
     String address = contact.getAddress();
 
-    if (!firsname.equals(firsname)) {
-      firsname += "\\n";
+    if (firstname != null) {
+      firstname.replaceAll("\n", "");
     }
-    if (!lastname.equals("")) {
-      lastname += "\\n";
-    }
+//    if (!lastname.equals("")) {
+//      lastname += "\n";
+//    }
 
     if (!address.equals("")) {
       address += "\\n";
@@ -117,7 +118,8 @@ public class ContactEditDeteilsTest extends TestBase {
       work = "W: " + work + "\n";
     }
 
-    return contact.withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address);
+    return contact.withFirrstname(firstname).withLastname(lastname).
+            withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withAddress(address);
   }
 
 

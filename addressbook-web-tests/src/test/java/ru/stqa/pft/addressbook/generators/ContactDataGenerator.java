@@ -62,30 +62,29 @@ public class ContactDataGenerator {
   private void saveAsJson(List<ContactDate> contacts, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(json);
-    writer.close();
+    try (Writer writer = new FileWriter(file)){
+      writer.write(json);
+    }
   }
 
   private void saveAsXml(List<ContactDate> contacts, File file) throws IOException {
     XStream xstream = new XStream();
     xstream.processAnnotations(ContactDate.class);
     String xml = xstream.toXML(contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
-
+    try (Writer writer = new FileWriter(file)){
+      writer.write(xml);
+    }
   }
 
   //save file
   private void saveAsCsv(List<ContactDate> contacts, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
-    Writer writer = new FileWriter(file);
-    for(ContactDate contact : contacts){
-      writer.write(String.format("%s;%s;\n", contact.getFirrstname(), contact.getLastname(), contact.getHome(),
-              contact.getEmail(), contact.getAddress()));
+    try (Writer writer = new FileWriter(file)){
+      for(ContactDate contact : contacts){
+        writer.write(String.format("%s;%s;\n", contact.getFirrstname(), contact.getLastname(), contact.getHome(),
+                contact.getEmail(), contact.getAddress()));
+      }
     }
-    writer.close();
   }
   //genereate file
   private List<ContactDate> generateContacts(int count) {

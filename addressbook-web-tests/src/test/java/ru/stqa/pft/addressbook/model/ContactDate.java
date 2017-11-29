@@ -228,6 +228,9 @@ public class ContactDate {
     return "ContactDate{" +
             "firrstname='" + firrstname + '\'' +
             ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", email='" + email + '\'' +
+            ", home='" + home + '\'' +
             '}';
   }
 

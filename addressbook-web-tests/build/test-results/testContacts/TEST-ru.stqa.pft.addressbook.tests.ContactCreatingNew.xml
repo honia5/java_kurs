@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.ContactCreatingNew" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-11-30T21:19:53" hostname="PLGLI2NB0035" time="11.534">
+  <properties/>
+  <testcase name="testCreatingNewContact[0](ContactDate{firrstname='Robert1', lastname='Honca1', address='ul.Pilna 28, 44-155 Maciuwaksze1', email='test@gmail.com1', home='50184482481'})" classname="ru.stqa.pft.addressbook.tests.ContactCreatingNew" time="5.337"/>
+  <testcase name="testCreatingNewContact[1](ContactDate{firrstname='Robert1', lastname='Honca1', address='ul.Pilna 28, 44-155 Maciuwaksze1', email='test@gmail.com1', home='50184482481'})" classname="ru.stqa.pft.addressbook.tests.ContactCreatingNew" time="3.031"/>
+  <testcase name="testCreatingNewContact[2](ContactDate{firrstname='Robert1', lastname='Honca1', address='ul.Pilna 28, 44-155 Maciuwaksze1', email='test@gmail.com1', home='50184482481'})" classname="ru.stqa.pft.addressbook.tests.ContactCreatingNew" time="3.165"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

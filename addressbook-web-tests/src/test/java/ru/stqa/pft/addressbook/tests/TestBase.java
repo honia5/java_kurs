@@ -14,7 +14,8 @@ import ru.stqa.pft.addressbook.appmenager.ApplicationMenager;
  */
 public class TestBase {
 
-  protected static final ApplicationMenager app = new ApplicationMenager(BrowserType.FIREFOX);
+  protected static final ApplicationMenager app
+          = new ApplicationMenager(System.getProperty("browser", BrowserType.FIREFOX));
 
 
   @BeforeSuite

@@ -3,41 +3,68 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 @XStreamAlias("contact")
+@Entity
+@Table(name = "addressbook")
 public class ContactDate {
+
+
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
   @Expose
+  @Column(name = "firstname")
   private String firrstname;
   @Expose
+  @Column(name = "lastname")
   private String lastname;
-  private File photo;
+  @Type(type = "text")
+  private String photo;
   @Expose
+  @Transient
   private String address;
+  @Transient
   private String mobile;
   @Expose
+  @Transient
   private String email;
+  @Transient
   private String email2;
+  @Transient
   private String email3;
   @Expose
+  @Transient
   private String home;
+  @Transient
   private String group;
+  @Column(name = "home")
+  @Type(type = "text")
   private String homePhone;
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobilePhone;
+  @Column(name = "work")
+  @Type(type = "text")
   private String workPhone;
+  @Transient
   private String allPhones;
+  @Transient
   private String allEmails;
+  @Transient
   private String allDeteils;
 
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   public ContactDate withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
@@ -222,15 +249,12 @@ public class ContactDate {
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
   }
-
   @Override
   public String toString() {
     return "ContactDate{" +
-            "firrstname='" + firrstname + '\'' +
+            "id=" + id +
+            ", firrstname='" + firrstname + '\'' +
             ", lastname='" + lastname + '\'' +
-            ", address='" + address + '\'' +
-            ", email='" + email + '\'' +
-            ", home='" + home + '\'' +
             '}';
   }
 

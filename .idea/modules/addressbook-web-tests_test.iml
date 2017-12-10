@@ -71,7 +71,6 @@
     <orderEntry type="library" name="Gradle: org.eclipse.jetty:jetty-util:9.2.12.v20150709" level="project" />
     <orderEntry type="library" name="Gradle: org.eclipse.jetty.websocket:websocket-api:9.2.12.v20150709" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpcore:4.4.3" level="project" />
-    <orderEntry type="library" name="hibernate-core-5.2.12.Final" level="application" />
   </component>
   <component name="TestModuleProperties" production-module="addressbook-web-tests_main" />
 </module>

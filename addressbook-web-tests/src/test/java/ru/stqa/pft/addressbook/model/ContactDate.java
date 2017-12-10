@@ -23,33 +23,35 @@ public class ContactDate {
   @Expose
   @Column(name = "lastname")
   private String lastname;
-  @Type(type = "text")
-  private String photo;
   @Expose
-  @Transient
+  @Column(name = "address")
+  @Type(type = "text")
   private String address;
+  @Expose
+  @Column(name = "email")
+  @Type(type = "text")
+  private String email;
+  @Expose
+  @Column(name = "home")
+  @Type(type = "text")
+  private String home;
   @Transient
   private String mobile;
-  @Expose
-  @Transient
-  private String email;
   @Transient
   private String email2;
   @Transient
   private String email3;
-  @Expose
-  @Transient
-  private String home;
   @Transient
   private String group;
-  @Column(name = "home")
-  @Type(type = "text")
+  @Transient
   private String homePhone;
-  @Column(name = "mobile")
-  @Type(type = "text")
+  //@Column(name = "mobile")
+  //@Type(type = "text")
+  @Transient
   private String mobilePhone;
-  @Column(name = "work")
-  @Type(type = "text")
+  //@Column(name = "work")
+  //@Type(type = "text")
+  @Transient
   private String workPhone;
   @Transient
   private String allPhones;
@@ -57,6 +59,9 @@ public class ContactDate {
   private String allEmails;
   @Transient
   private String allDeteils;
+  //@Type(type = "text")
+  @Transient
+  private String photo;
 
 
   public File getPhoto() {
@@ -231,6 +236,18 @@ public class ContactDate {
   }
 
   @Override
+  public String toString() {
+    return "ContactDate{" +
+            "id=" + id +
+            ", firrstname='" + firrstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", email='" + email + '\'' +
+            ", home='" + home + '\'' +
+            '}';
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -239,7 +256,10 @@ public class ContactDate {
 
     if (id != that.id) return false;
     if (firrstname != null ? !firrstname.equals(that.firrstname) : that.firrstname != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+    if (address != null ? !address.equals(that.address) : that.address != null) return false;
+    if (email != null ? !email.equals(that.email) : that.email != null) return false;
+    return home != null ? home.equals(that.home) : that.home == null;
   }
 
   @Override
@@ -247,16 +267,9 @@ public class ContactDate {
     int result = id;
     result = 31 * result + (firrstname != null ? firrstname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (address != null ? address.hashCode() : 0);
+    result = 31 * result + (email != null ? email.hashCode() : 0);
+    result = 31 * result + (home != null ? home.hashCode() : 0);
     return result;
   }
-  @Override
-  public String toString() {
-    return "ContactDate{" +
-            "id=" + id +
-            ", firrstname='" + firrstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
-  }
-
-
 }

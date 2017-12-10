@@ -22,6 +22,9 @@ public class ContactHelper extends HelperBase {
   public void submitCraetionContact() {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
+  public void updateCraetionContact() {
+    click(By.name("update"));
+  }
 
   public void fillNewContactForm(ContactDate contactDate, boolean creation) {
     type(By.name("firstname"), contactDate.getFirrstname());
@@ -89,7 +92,8 @@ public class ContactHelper extends HelperBase {
     selectContactById(contact.getId());
     initContactModificationById(contact.getId());
     fillNewContactForm(contact, false);
-    submitCraetionContact();
+    updateCraetionContact();
+    //submitCraetionContact();
     contactCache = null;
     contactPage();
   }

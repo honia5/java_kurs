@@ -55,11 +55,12 @@ public class GroupCreationTest extends TestBase {
       return goups.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
     }
   }
-  @Test(dataProvider = "validGroupsFromJson")
+  @Test(dataProvider = "validGroupsFromXml")
   public void GroupCreationTest(GroupDate group) {
-      Groups before = app.group().all();
+      app.goTo().groupPage();
+      Groups before = app.db().groups();
       app.group().create(group);
-      Groups after = app.group().all();
+      Groups after = app.db().groups();
       assertThat(app.group().count(), equalTo(before.size() + 1));
       assertThat(after, equalTo(
               before.withAdded(group.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));

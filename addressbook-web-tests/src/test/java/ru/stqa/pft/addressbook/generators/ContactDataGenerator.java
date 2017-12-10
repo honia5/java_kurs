@@ -81,8 +81,8 @@ public class ContactDataGenerator {
     System.out.println(new File(".").getAbsolutePath());
     try (Writer writer = new FileWriter(file)){
       for(ContactDate contact : contacts){
-        writer.write(String.format("%s;%s;\n", contact.getFirrstname(), contact.getLastname(), contact.getHome(),
-                contact.getEmail(), contact.getAddress()));
+        writer.write(String.format("%s;%s;\n", contact.getFirrstname(), contact.getLastname(),contact.getAddress()
+                ,contact.getEmail(), contact.getHome()));
       }
     }
   }

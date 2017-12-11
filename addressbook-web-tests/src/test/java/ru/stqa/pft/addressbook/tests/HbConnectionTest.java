@@ -34,23 +34,34 @@ public class HbConnectionTest {
       // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
       // so destroy it manually.
       StandardServiceRegistryBuilder.destroy( registry );
+      return;
     }
   }
 
   @Test
-  public void connectionHbTest(){
+  public void testHbConnectionGroups() {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<GroupDate> result = session.createQuery("from GroupDate").list();
+      for (GroupDate groups : result) {
+        System.out.println(groups);
+        System.out.println(groups.getContacts());
+     }
+    session.getTransaction().commit();
+    session.close();
+  }
 
-
+  @Test
+  public void testHbConnectionContacts(){
     Session session = sessionFactory.openSession();
     session.beginTransaction();
     List<ContactDate> result = session.createQuery( "from ContactDate where deprecated = '0000-00-00'" ).list();
-    for ( ContactDate contact : result ) {
-      System.out.println(contact);
-    }
     session.getTransaction().commit();
     session.close();
-
-
+    for ( ContactDate contact : result ) {
+      System.out.println(contact);
+      System.out.println(contact.getGroups());
+    }
 
   }
 }

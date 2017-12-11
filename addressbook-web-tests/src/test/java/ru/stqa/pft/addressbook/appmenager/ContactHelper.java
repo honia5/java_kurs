@@ -3,8 +3,10 @@ package ru.stqa.pft.addressbook.appmenager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactDate;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupDate;
 
 import java.util.List;
 
@@ -164,7 +166,17 @@ public class ContactHelper extends HelperBase {
     wd.navigate().back();
     return new ContactDate().withAllDeteils(allDetails);
 
+  }
+  public void addContactToGroup(ContactDate conact, GroupDate associateGroup){
+    selectContactById(conact.getId());
+    selectGroupToAdd(associateGroup);
+    initAddContact();
 
+  }
+  public void deleteContactFromGroup(GroupDate groupDate, ContactDate contactDate){
+    selectGroupToDelete(groupDate);
+    selectContactById(contactDate.getId());
+    initDeleteContact();
 
   }
   public void initContactModificationById(int id) {
@@ -176,6 +188,22 @@ public class ContactHelper extends HelperBase {
 
     wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s']", id))).click();
 
+  }
+
+  public void initAddContact() {
+    wd.findElement(By.name("add")).click();
+  }
+
+  public void initDeleteContact() {
+    wd.findElement(By.name("remove")).click();
+  }
+
+  public void selectGroupToAdd(GroupDate group) {
+    new Select(wd.findElement(By.cssSelector("select[name='to_group']"))).selectByVisibleText(group.getName());
+      }
+
+  public void selectGroupToDelete(GroupDate group) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
   }
 
 

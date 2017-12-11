@@ -33,19 +33,47 @@ public class DbHelper {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
     List<GroupDate> result = session.createQuery( "from GroupDate" ).list();
+    for (GroupDate groups : result) {
+      System.out.println(groups);
+    }
     session.getTransaction().commit();
     session.close();
     return new Groups(result);
+
+  }
+  public GroupDate groups(int id) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    String request = "from GroupDate where group_id = " + id;
+    System.out.println(request);
+    List<GroupDate> resultGroup = session.createQuery(request).list();
+    GroupDate result =  resultGroup.iterator().next();
+    session.getTransaction().commit();
+    session.close();
+    return result;
 
   }
   public Contacts contacts() {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
     List <ContactDate> result = session.createQuery("from ContactDate where deprecated = '0000-00-00'").list();
+    for (ContactDate contacts : result) {
+      System.out.println(contacts);
+    }
     session.getTransaction().commit();
     session.close();
     return new Contacts(result);
 
+  }
+  public ContactDate contacts(int id) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    String request = "from ContactDate where id = " + id;
+    List<ContactDate> resultContact = session.createQuery(request).list();
+    ContactDate result =  resultContact.iterator().next();
+    session.getTransaction().commit();
+    session.close();
+    return result;
   }
 
 
